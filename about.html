@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Me</title>
+
+  <!-- Manifest & Icon -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#2196f3">
+  <link rel="icon" href="icons/icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh; 
+      display: flex;
+      flex-direction: column; /* biar ada nav di atas + konten di tengah */
+      align-items: center;
+      font-family: "Times New Roman", Times, serif;
+      font-size: 20px;
+      background-image: url('gambar 2/WhatsApp Image 2025-10-04 at 16.41.28_97572a66.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: #fff;
+    }
+
+    nav {
+      background: rgba(255, 255, 255, 0.6);
+      width: 100%;
+      text-align: center;
+      padding: 10px;
+    }
+    nav a {
+      color: black;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+    nav a:hover { text-decoration: underline; }
+
+    .content {
+      background-color: rgba(0, 0, 0, 0.4);
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 500px;
+      margin-top: 50px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 15px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      background: #2196f3;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover { background: #1769aa; }
+  </style>
+
+  <!-- Service Worker -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(() => console.log("Service Worker terdaftar"))
+          .catch(err => console.log("SW gagal:", err));
+      });
+    }
+  </script>
+</head>
+<body>
+  <!-- Navigasi -->
+ 
+
+  <div class="content">
+    <h2>About Me</h2>
+    <p><b>Nama :</b> Abdur Rohim</p>
+    <p><b>NIM :</b> 2411533015</p>
+    <p><b>Akt :</b> Informatika 2024</p>
+
+    <p>
+      Saat ini saya sedang dalam proses pengerjaan tugas 
+      yaitu "membuat input pada halaman Contact."
+    </p>
+
+    <button onclick="window.location.href='index.html'">⬅ Kembali ke Halaman Utama</button>
+  </div>
+</body>
+</html>

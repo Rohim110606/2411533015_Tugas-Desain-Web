@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Tugas Desain Web</title>
+
+  <!-- Link ke manifest.json -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#2196f3">
+
+  <!-- Icon -->
+  <link rel="icon" href="icons/icon-192.png" type="image/png">
+
+  <!-- CSS -->
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: url("gambar 2/WhatsApp Image 2025-10-04 at 16.41.28_97572a66.jpg") no-repeat center center fixed;
+      background-size: cover;
+      text-align: center;
+      color: #222;
+    }
+    nav {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 10px;
+      margin: 20px 0;
+    }
+    nav a {
+      color: black;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+    nav a:hover { text-decoration: underline; }
+  </style>
+
+  <!-- Service Worker -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/Service worker.js')
+      .then(() => console.log("Service Worker terdaftar"))
+      .catch(err => console.log("SW gagal:", err));
+    }
+  </script>
+</head>
+<body>
+  <h1>Welcome Guys </h1>
+  <p>Selamat datang di website ini. Website ini dibuat dalam rangka pengerjaan tugas 1 Mata kuliah Desain Web Informatika Akt 24 Semester 3.</p>
+
+  <nav>
+    <a href="about.html">About</a> |
+    <a href="kegiatan.html">Kegiatan</a> |
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <p>Website ini sekarang sudah mendukung <b>Progressive Web App (PWA)</b>. Anda bisa menginstalnya seperti aplikasi dan tetap mengakses konten meskipun offline.</p>
+
+  <p>&copy; 2025 Informatika Akt 24 - Desain Web</p>
+</body>
+</html>
