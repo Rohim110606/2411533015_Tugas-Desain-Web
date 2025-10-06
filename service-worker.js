@@ -1,13 +1,13 @@
 const CACHE_NAME = "pwa-cache-v1";
 const urlsToCache = [
-  "/",
-  "/index.html",
-  "/about.html",
-  "/kegiatan.html",
-  "/contact.html",
-  "/offline.html",
-  "/donatcandy.png",            
-  "/gambar%202/pemandangan.jpg" 
+  ".",
+  "index.html",
+  "about.html",
+  "kegiatan.html",
+  "contact.html",
+  "offline.html",
+  "donatcandy.png",            
+  "gambar%202/pemandangan.jpg" 
 ];
 
 
@@ -43,12 +43,13 @@ self.addEventListener("fetch", (event) => {
 
         // fallback khusus untuk halaman navigasi
         if (event.request.mode === "navigate") {
-          return caches.match("/offline.html");
+          return caches.match("offline.html");
         }
       });
     })
   );
 });
+
 
 
 
