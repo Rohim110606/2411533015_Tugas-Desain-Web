@@ -11,6 +11,7 @@
 
   <!-- Icon -->
   <link rel="icon" href="icons/icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
 
   <!-- CSS -->
   <style>
@@ -23,7 +24,7 @@
       color: #222;
     }
     nav {
-      background: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.7);
       padding: 10px;
       margin: 20px 0;
     }
@@ -34,28 +35,75 @@
       font-weight: bold;
     }
     nav a:hover { text-decoration: underline; }
+
+    /* Tombol install */
+    #installBtn {
+      display: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      background: #2196f3;
+      color: white;
+      cursor: pointer;
+      margin: 20px 0;
+    }
+    #installBtn:hover {
+      background: #1976d2;
+    }
   </style>
 
-  <!-- Service Worker -->
+  <!-- Service Worker + Install Script -->
   <script>
+    // Daftarkan Service Worker
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/Service worker.js')
-      .then(() => console.log("Service Worker terdaftar"))
-      .catch(err => console.log("SW gagal:", err));
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log("Service Worker terdaftar"))
+          .catch(err => console.log("SW gagal:", err));
+      });
     }
+
+    // Tombol Install PWA
+    let deferredPrompt;
+    window.addEventListener("beforeinstallprompt", (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      const installBtn = document.getElementById("installBtn");
+      installBtn.style.display = "inline-block";
+
+      installBtn.addEventListener("click", () => {
+        installBtn.style.display = "none";
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choice) => {
+          if (choice.outcome === "accepted") {
+            console.log("User menginstall aplikasi");
+          } else {
+            console.log("User batal install");
+          }
+          deferredPrompt = null;
+        });
+      });
+    });
   </script>
 </head>
 <body>
-  <h1>Welcome Guys </h1>
-  <p>Selamat datang di website ini. Website ini dibuat dalam rangka pengerjaan tugas 1 Mata kuliah Desain Web Informatika Akt 24 Semester 3.</p>
+  <h1>Welcome Guys</h1>
+  <p>Selamat datang di website ini. Website ini dibuat dalam rangka pengerjaan tugas 1 Mata Kuliah Desain Web Informatika Akt 24 Semester 3.</p>
 
   <nav>
+    <a href="index.html">Home</a> |
     <a href="about.html">About</a> |
     <a href="kegiatan.html">Kegiatan</a> |
     <a href="contact.html">Contact</a>
   </nav>
 
-  <p>Website ini sekarang sudah mendukung <b>Progressive Web App (PWA)</b>. Anda bisa menginstalnya seperti aplikasi dan tetap mengakses konten meskipun offline.</p>
+  <p>Website ini sekarang sudah mendukung <b>Progressive Web App (PWA)</b>.  
+  Anda bisa menginstalnya seperti aplikasi dan tetap mengakses konten meskipun offline.</p>
+
+  <!-- Tombol install PWA -->
+  <button id="installBtn">Install Aplikasi</button>
 
   <p>&copy; 2025 Informatika Akt 24 - Desain Web</p>
 </body>
