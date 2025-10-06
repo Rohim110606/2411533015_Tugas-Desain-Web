@@ -39,13 +39,14 @@ self.addEventListener("fetch", (event) => {
   event.respondWith(
     fetch(event.request).catch(() => {
       if (event.request.mode === "navigate") {
-        return caches.match("/offline.html");
+        return caches.match("offline.html");
       } else {
         return caches.match(event.request);
       }
     })
   );
 });
+
 
 
 
