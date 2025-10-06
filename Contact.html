@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
@@ -139,10 +139,8 @@
     function konfirmasiPesan(event) {
       event.preventDefault();
 
-      
       let balasan = document.querySelector('input[name="balasan"]:checked');
       if (balasan) {
-       
         alert("✅ Terima kasih telah mengisi!");
       }
 
@@ -150,7 +148,7 @@
       return false;
     }
     function kembaliKeHome() {
-      window.open('indeks.html', '_self');
+      window.open('index.html', '_self'); <!-- diganti dari indeks.html ke index.html -->
       window.close();
     }
   </script>
@@ -186,7 +184,6 @@
       <label for="pesan">Pesan :</label><br>
       <textarea id="pesan" name="pesan" rows="4" required></textarea><br>
 
-     
       <label>Apakah Anda ingin menerima balasan?</label>
       <div class="radio-group">
         <label><input type="radio" id="balasan_ya" name="balasan" value="Iya" required> Iya</label>
