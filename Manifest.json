@@ -1,7 +1,7 @@
 {
   "name": "Website Tugas Desain Web",
   "short_name": "WebTugas",
-  "start_url": "/",
+  "start_url": "/Indeks.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#2196f3",
@@ -18,3 +18,4 @@
     }
   ]
 }
+
