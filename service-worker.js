@@ -37,18 +37,11 @@ self.addEventListener("activate", (event) => {
 
 self.addEventListener("fetch", (event) => {
   event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      return (
-        cachedResponse ||
-        fetch(event.request).then((networkResponse) => {
-          return networkResponse;
-        }).catch(() => {
-          if (event.request.mode === "navigate") {
-            return caches.match("offline.html");
-          }
-        })
-      );
-    })
+    fetch(event.request).catch(() =>
+      caches.match(event.request).then((res) => {
+        return res || caches.match("offline.html");
+      })
+    )
   );
 });
 
