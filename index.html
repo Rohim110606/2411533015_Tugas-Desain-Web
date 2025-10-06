@@ -50,6 +50,31 @@
     #installBtn:hover {
       background: #1976d2;
     }
+
+    /* Notifikasi custom */
+    #notification {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: bold;
+      display: none;
+      z-index: 10000;
+      animation: fadein 0.5s, fadeout 0.5s 4.5s;
+    }
+    @keyframes fadein {
+      from { opacity: 0; bottom: 0; }
+      to { opacity: 1; bottom: 20px; }
+    }
+    @keyframes fadeout {
+      from { opacity: 1; bottom: 20px; }
+      to { opacity: 0; bottom: 0; }
+    }
   </style>
 </head>
 <body>
@@ -70,6 +95,9 @@
   <button id="installBtn">Install Aplikasi</button>
 
   <p>&copy; 2025 Informatika Akt 24 - Desain Web</p>
+
+  <!-- Notifikasi custom -->
+  <div id="notification"></div>
 
   <!-- Service Worker + Install Script -->
   <script>
@@ -105,13 +133,24 @@
       });
     });
 
+    // Fungsi tampilkan notifikasi custom
+    function showNotification(message, bgColor) {
+      const notif = document.getElementById("notification");
+      notif.textContent = message;
+      notif.style.background = bgColor;
+      notif.style.display = "block";
+      setTimeout(() => {
+        notif.style.display = "none";
+      }, 5000);
+    }
+
     // Peringatan jika Offline / Online
     window.addEventListener("offline", () => {
-      alert("⚠️ Anda sekarang sedang offline. Beberapa fitur mungkin tidak tersedia.");
+      showNotification("⚠️ Anda sekarang sedang offline. Beberapa fitur mungkin tidak tersedia.", "rgba(200,0,0,0.85)");
     });
 
     window.addEventListener("online", () => {
-      alert("✅ Anda sudah kembali online.");
+      showNotification("✅ Anda sudah kembali online.", "rgba(0,150,0,0.85)");
     });
   </script>
 </body>
