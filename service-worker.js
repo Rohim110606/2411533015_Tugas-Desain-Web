@@ -1,12 +1,13 @@
 const CACHE_NAME = "pwa-cache-v1";
 const urlsToCache = [
-  "index.html",
-  "about.html",
-  "kegiatan.html",
-  "contact.html",
-  "offline.html",
-  "icons/icon-192.png",
-  "icons/icon-512.png"
+  "/",
+  "/index.html",
+  "/about.html",
+  "/kegiatan.html",
+  "/contact.html",
+  "/offline.html",
+  "/icons/icon-192.png",
+  "/icons/icon-512.png"
 ];
 
 // Install Service Worker & cache files
@@ -36,10 +37,15 @@ self.addEventListener("activate", (event) => {
 // Fetch & fallback ke cache saat offline
 self.addEventListener("fetch", (event) => {
   event.respondWith(
-    fetch(event.request).catch(() =>
-      caches.match(event.request).then((res) => {
-        return res || caches.match("offline.html");
-      })
-    )
+    fetch(event.request).catch(() => {
+      return caches.match(event.request).then((response) => {
+        if (response) return response;
+
+        // fallback khusus untuk halaman navigasi
+        if (event.request.mode === "navigate") {
+          return caches.match("/offline.html");
+        }
+      });
+    })
   );
 });
