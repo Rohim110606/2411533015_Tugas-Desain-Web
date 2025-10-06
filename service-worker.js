@@ -6,8 +6,8 @@ const urlsToCache = [
   "kegiatan.html",
   "contact.html",
   "offline.html",
-  "icons/icon-192.png",
-  "icons/icon-512.png"
+  "images/pemandangan.jpg",
+  "images/donatcandy.png"
 ];
 
 // Install Service Worker & cache files
@@ -49,4 +49,5 @@ self.addEventListener("fetch", (event) => {
     })
   );
 });
+
 
