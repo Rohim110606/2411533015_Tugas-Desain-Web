@@ -11,7 +11,7 @@
 
   <!-- Icons -->
   <link rel="icon" href="donatcandy.png" type="image/png">
-<link rel="apple-touch-icon" href="donatcandy.png">
+  <link rel="apple-touch-icon" href="donatcandy.png">
 
   <style>
     body {
@@ -77,8 +77,8 @@
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('service-worker.js')
-          .then(() => console.log("Service Worker terdaftar"))
-          .catch(err => console.log("SW gagal:", err));
+          .then(() => console.log("✅ Service Worker terdaftar"))
+          .catch(err => console.log("❌ SW gagal:", err));
       });
     }
 
@@ -104,9 +104,15 @@
         });
       });
     });
+
+    // Peringatan jika Offline / Online
+    window.addEventListener("offline", () => {
+      alert("⚠️ Anda sekarang sedang offline. Beberapa fitur mungkin tidak tersedia.");
+    });
+
+    window.addEventListener("online", () => {
+      alert("✅ Anda sudah kembali online.");
+    });
   </script>
 </body>
 </html>
-
-
-
