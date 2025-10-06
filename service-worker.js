@@ -38,13 +38,11 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("fetch", (event) => {
   event.respondWith(
     fetch(event.request).catch(() => {
-      return caches.match(event.request).then((response) => {
-        if (response) return response;
-
-        if (event.request.mode === "navigate") {
-          return caches.match("offline.html");
-        }
-      });
+      if (event.request.mode === "navigate") {
+        return caches.match("/offline.html");
+      } else {
+        return caches.match(event.request);
+      }
     })
   );
 });
