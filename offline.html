@@ -18,15 +18,34 @@
       color: white;
       text-align: center;
     }
+
     img {
       width: 150px;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
+    }
+
+    .offline-box {
+      background-color: #d32f2f; /* merah seperti di contoh */
+      color: #fff;
+      padding: 16px 24px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      font-size: 18px;
+    }
+
+    .icon {
+      font-size: 22px;
     }
   </style>
 </head>
 <body>
   <img src="donatcandy.png" alt="Logo">
-  <h2>Anda offline</h2>
-  <p>Beberapa fitur mungkin tidak tersedia.</p>
+  <div class="offline-box">
+    <span class="icon">⚠️</span>
+    <span>Anda sekarang sedang offline. Beberapa fitur mungkin tidak tersedia.</span>
+  </div>
 </body>
 </html>
